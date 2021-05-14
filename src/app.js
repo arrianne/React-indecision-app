@@ -1,7 +1,9 @@
+'use strict';
+
 console.log('App.js is running!');
 
 // JSX - JavaScript XML
-var template = <p>Does this change?</p>;
+var template = <p>This is JSX</p>
 
 var appRoot = document.getElementById('app');
 
