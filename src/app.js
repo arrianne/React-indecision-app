@@ -4,10 +4,9 @@ console.log('App.js is running!');
 
 // JSX - JavaScript XML
 var app = {
-  title: 'Indecision appppppp',
+  title: 'Indecision app',
   subtitle: 'This is a subtitle'
 };
-
 
 var template = (
   <div>
@@ -15,20 +14,26 @@ var template = (
     <p>{app.subtitle}</p>
   </div>
 );
+
 var user = {
   name: 'Bob',
   age: '46',
-  location: 'sunshine coast'
+  location: 'Hawaii'
 };
 
+function getLocation(location) {
+  if (location){
+    return <p>Location: {location}</p>;
+  }
+}
 var templateTwo = (
   <div>
     <h1>{user.name}</h1>
     <p>Age: {user.age}</p>
-    <p>{user.location}</p>
+    {getLocation(user.location)}
   </div>
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
