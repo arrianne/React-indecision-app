@@ -1,81 +1,40 @@
 'use strict';
 
-console.log('App.js is running!');
+// arguments object - no longer bound with arrow functions
 
-// JSX - JavaScript XML
-var app = {
-  title: 'Indecision app',
-  subtitle: 'This is a subtitle',
-  options: ['one', 'two']
+var add = function add(a, b) {
+  // console.log(arguments);
+  return a + b;
 };
+console.log(add(55, 1, 1001));
 
-var template = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    app.title
-  ),
-  app.subtitle && React.createElement(
-    'p',
-    null,
-    app.subtitle
-  ),
-  React.createElement(
-    'p',
-    null,
-    app.options.length > 0 ? 'Here are your options:' : 'There are no options'
-  ),
-  React.createElement(
-    'ol',
-    null,
-    React.createElement(
-      'li',
-      null,
-      'Option one'
-    ),
-    React.createElement(
-      'li',
-      null,
-      'Option two'
-    )
-  )
-);
+// this keyword - no longer bound
 
 var user = {
-  name: 'Bob',
-  age: '52',
-  location: 'Hawaii'
+  name: 'Andrew',
+  cities: ['Philadelphia', 'New York', 'Dublin'],
+  printPlacesLived: function printPlacesLived() {
+    var _this = this;
+
+    return this.cities.map(function (city) {
+      return _this.name + ' has lived in ' + city;
+    });
+  }
+};
+console.log(user.printPlacesLived());
+
+// Challenge area
+
+var multiplier = {
+  numbers: [10, 20, 30],
+  multiplyBy: 3,
+  multiply: function multiply() {
+    var _this2 = this;
+
+    return this.numbers.map(function (number) {
+      return number * _this2.multiplyBy;
+    });
+  }
 };
 
-function getLocation(location) {
-  if (location) {
-    return React.createElement(
-      'p',
-      null,
-      'Location: ',
-      location
-    );
-  }
-}
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    user.name ? user.name : 'Anonymous'
-  ),
-  user.age && user.age >= 18 && React.createElement(
-    'p',
-    null,
-    'Age: ',
-    user.age
-  ),
-  getLocation(user.location)
-);
-
-var appRoot = document.getElementById('app');
-
-ReactDOM.render(template, appRoot);
+console.log(multiplier.multiply());
